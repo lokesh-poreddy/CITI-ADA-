@@ -9,7 +9,7 @@ ENV VITE_PLATFORM_API_BASE_URL=$VITE_PLATFORM_API_BASE_URL
 ENV VITE_AI_SERVICE_BASE_URL=$VITE_AI_SERVICE_BASE_URL
 RUN npm run build
 
-FROM nginx:1.27-alpine
+FROM nginx:1.29-alpine
 ENV NGINX_ENVSUBST_FILTER=^CSP_CONNECT_SOURCES$
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY --from=build /workspace/dist /usr/share/nginx/html
