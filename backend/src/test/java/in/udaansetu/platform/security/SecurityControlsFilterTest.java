@@ -28,7 +28,7 @@ class SecurityControlsFilterTest {
     @Test
     void rejectsKnownOversizedApiContentLength() throws ServletException, IOException {
         MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/v1/analytics/events");
-        request.setContentLength(1_048_577);
+        request.setContent(new byte[1_048_577]); // 1 MiB + 1 byte — exceeds the 1 MiB prototype limit
         MockHttpServletResponse response = new MockHttpServletResponse();
         filter.doFilter(request, response, new MockFilterChain());
         assertEquals(413, response.getStatus());
