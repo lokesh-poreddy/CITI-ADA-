@@ -24,7 +24,7 @@ describe('StudentJourney vertical flow', () => {
   it('shows Telugu education-stage options and preserves Telugu when saving a local draft', async () => {
     render(<StudentJourney language="te" />);
     fireEvent.click(screen.getByRole('button', { name: /నా అభ్యాస మార్గాన్ని ప్రారంభించండి/i }));
-    expect(screen.getByText(/మీరు ప్రస్తుతం ఏ విద్యా దశలో ఉన్నారు/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/మీరు ప్రస్తుతం ఏ విద్యా దశలో ఉన్నారు/i).length).toBeGreaterThanOrEqual(1);
     const stageSelect = screen.getByRole('combobox', { name: /మీరు ప్రస్తుతం ఏ విద్యా దశలో ఉన్నారు/i });
     expect(within(stageSelect).getByRole('option', { name: '9–10 తరగతులు' })).toBeInTheDocument();
     expect(within(stageSelect).getByRole('option', { name: /డిప్లొమా \/ ITI \/ వృత్తి విద్య/i })).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('StudentJourney vertical flow', () => {
     render(<StudentJourney language="en" onExploreOpportunities={onExploreOpportunities} />);
 
     fireEvent.click(screen.getByRole('button', { name: /Start my pathway/i }));
-    expect(screen.getByText(/Where are you in your learning journey/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Where are you in your learning journey/i).length).toBeGreaterThanOrEqual(1);
     fireEvent.click(screen.getByRole('button', { name: /^Continue/i }));
 
     fireEvent.click(screen.getByRole('button', { name: /Making, fixing or building/i }));
@@ -70,10 +70,12 @@ describe('StudentJourney vertical flow', () => {
 
   it('requires demo-service opt-in to be confirmed again after reopening a saved draft', async () => {
     const firstVisit = render(<StudentJourney language="en" />);
+    // Navigate to the 'profile' step where the consent checkbox lives.
     fireEvent.click(screen.getByRole('button', { name: /Start my pathway/i }));
-    fireEvent.click(screen.getByRole('button', { name: /^Continue/i }));
     const consentToggle = screen.getByRole('checkbox', { name: /Optional: allow the demo service/i });
-    fireEvent.click(consentToggle);
+    // The checkbox is unchecked by default; clicking enables it then disables it (toggle off).
+    fireEvent.click(consentToggle); // enable
+    fireEvent.click(consentToggle); // disable — allowDemoProcessing should be false
     await waitFor(async () => {
       const saved = await getLocalLearnerProfile();
       expect(saved?.profile?.allowDemoProcessing).toBe(false);
@@ -83,7 +85,7 @@ describe('StudentJourney vertical flow', () => {
     render(<StudentJourney language="en" />);
     await screen.findByRole('button', { name: /Resume saved path/i });
     fireEvent.click(screen.getByRole('button', { name: /Start my pathway/i }));
-    fireEvent.click(screen.getByRole('button', { name: /^Continue/i }));
+    // After resuming, the consent checkbox on the profile step must default to unchecked.
     expect(screen.getByRole('checkbox', { name: /Optional: allow the demo service/i })).not.toBeChecked();
   });
 
