@@ -1,0 +1,26 @@
+{
+  "project": "UdaanSetu",
+  "phase": 10,
+  "title": "Scholarship and scheme discovery",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Make scholarship and government-scheme discovery source-first, diverse and explicit about incomplete data.",
+  "implementationPaths": [
+    "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityCatalogue.java",
+    "OpportunityService.java",
+    "OpportunityController.java",
+    "frontend/src/data/demoOpportunityCatalogue.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx",
+    "docs/OPPORTUNITY_DATA_GOVERNANCE.md"
+  ],
+  "apiContracts": [
+    "GET /api/v1/opportunities?type=SCHOLARSHIP",
+    "GET /api/v1/opportunities?q=&type=SCHEME"
+  ],
+  "guardrails": [
+    "Starter catalogue has one dated NSP portal notice plus portal references for courses, skill pathways, career services, apprenticeships, learning resources and language technology."
+  ],
+  "exitCriteria": [
+    "Student can filter/search listings, see provider/source/date, open official source, and sees a warning when criteria are not configured."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

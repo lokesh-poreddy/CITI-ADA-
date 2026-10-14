@@ -1,0 +1,13 @@
+{
+  "phase": 4,
+  "title": "Strengths and interest discovery",
+  "status": "implemented-in-prototype",
+  "acceptance": "Learners select multiple interests, strengths and goals; “I am not sure yet” is supported and selections can be revised.",
+  "representativeFiles": [
+    "frontend/src/student/careerCatalog.js",
+    "frontend/src/student/StudentJourney.jsx",
+    "frontend/src/student/StudentJourney.test.jsx"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

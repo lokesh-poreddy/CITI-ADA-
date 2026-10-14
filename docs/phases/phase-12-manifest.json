@@ -1,0 +1,30 @@
+{
+  "project": "UdaanSetu",
+  "phase": 12,
+  "title": "Student opportunity action centre",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Allow the learner to save, show interest, start application, mark applied/completed, and view saved actions.",
+  "implementationPaths": [
+    "backend/src/main/java/in/udaansetu/platform/actions/ActionStatus.java",
+    "ActionWriteRequest.java",
+    "ActionSyncRequest.java",
+    "StudentOpportunityAction.java",
+    "StudentActionService.java",
+    "StudentActionController.java",
+    "frontend/src/offline/offlinePocket.js",
+    "frontend/src/api/opportunities.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx"
+  ],
+  "apiContracts": [
+    "GET /api/v1/student/opportunity-actions",
+    "POST /api/v1/student/opportunity-actions",
+    "POST /api/v1/student/opportunity-actions/sync"
+  ],
+  "guardrails": [
+    "Prototype uses anonymous local learner key and no free-text notes. Client event IDs make retries idempotent within the current in-memory store."
+  ],
+  "exitCriteria": [
+    "User can save or update an action locally, view it in Saved Items, and sync it to the Java API when online."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

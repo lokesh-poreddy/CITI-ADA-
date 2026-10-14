@@ -1,0 +1,17 @@
+{
+  "phase": 18,
+  "title": "Facilitator workspace",
+  "goal": "Cohorts, learner links with consent state, and next-step referrals.",
+  "acceptanceCriteria": "A facilitator can create a cohort, add a learner only when consent is recorded, and record a referral only for a linked learner.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorWorkspaceService.java",
+    "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorWorkspaceController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

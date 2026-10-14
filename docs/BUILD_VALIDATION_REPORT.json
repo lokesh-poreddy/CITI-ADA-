@@ -1,0 +1,114 @@
+{
+  "project": "UdaanSetu",
+  "version": "0.6.1",
+  "generatedAt": "2026-10-14",
+  "status": "SOURCE_CHECKS_PASSED_FULL_BUILD_BLOCKED",
+  "productionReady": false,
+  "environment": {
+    "node": "v22.16.0",
+    "npm": "10.9.2",
+    "java": "21.0.12.1",
+    "python": "3.13.5",
+    "maven": "not installed; wrapper download requires network",
+    "docker": "not installed",
+    "mavenCentralDns": "unavailable in authoring environment",
+    "npmRegistryDns": "unavailable in authoring environment"
+  },
+  "passed": [
+    {
+      "check": "cross-layer source contract",
+      "result": "72/72 passed",
+      "command": "python3 scripts/check-integration-contracts.py",
+      "limitation": "offline source assertions, not end-to-end runtime"
+    },
+    {
+      "check": "Python AI tests",
+      "result": "12 passed",
+      "command": "cd ai-service && python3 -m pytest -q"
+    },
+    {
+      "check": "deterministic AI retrieval evaluation",
+      "result": "7/7 passed",
+      "command": "cd ai-service && python3 -m evaluation.evaluate_retrieval",
+      "limitation": "small synthetic/fixture-based smoke set"
+    },
+    {
+      "check": "Python compileall",
+      "result": "passed",
+      "command": "python3 -m compileall -q ai-service/app ai-service/evaluation ai-service/tests"
+    },
+    {
+      "check": "JavaScript/JSX syntax",
+      "result": "26 source files, 0 syntax errors",
+      "limitation": "TypeScript transpilation only, not Vite build"
+    },
+    {
+      "check": "Java persistence/reviewer source compilation",
+      "result": "passed with temporary framework stubs",
+      "limitation": "not a dependency-aware Maven/Spring compile"
+    },
+    {
+      "check": "Java persistence integration test source",
+      "result": "compiled with temporary Spring/JUnit stubs",
+      "limitation": "test not executed; not Maven verification"
+    },
+    {
+      "check": "configuration parsing",
+      "result": "28 JSON, 8 YAML, Maven POM XML passed; shell syntax passed",
+      "limitation": "not Compose schema validation or runtime integration"
+    },
+    {
+      "check": "toolchain doctor",
+      "result": "Java 21, Node, npm, Python available; Maven wrapper present; Docker absent; package lock absent",
+      "limitation": "no full frontend/backend/container validation"
+    }
+  ],
+  "blocked": [
+    {
+      "gate": "npm install + npm test + npm run build",
+      "status": "blocked",
+      "reason": "npm registry DNS unavailable"
+    },
+    {
+      "gate": "Maven clean verify/Spring tests",
+      "status": "blocked",
+      "reason": "Maven absent; Maven Central DNS unavailable"
+    },
+    {
+      "gate": "Flyway + H2/PostgreSQL runtime integration",
+      "status": "not executed",
+      "reason": "requires real Spring/Maven test runtime and PostgreSQL service"
+    },
+    {
+      "gate": "Docker images + Compose runtime smoke",
+      "status": "blocked",
+      "reason": "Docker/Compose unavailable"
+    },
+    {
+      "gate": "Browser/mobile/offline E2E",
+      "status": "not executed",
+      "reason": "requires built app and real browser/device tests"
+    },
+    {
+      "gate": "GitHub Actions",
+      "status": "configured, not executed locally",
+      "reason": "requires repository runner"
+    }
+  ],
+  "incrementChanges": [
+    "Added Flyway V2 composite index on candidate_id and review_status for efficient pending duplicate detection.",
+    "Opportunity duplicate validation uses an indexed SQL predicate instead of deserializing every queue item.",
+    "Startup seed routine inserts only missing references and preserves reviewed edits.",
+    "Existing catalogue rows update in place; created_at remains stable.",
+    "Added regression test source for reviewed edit preservation, created_at stability and pending-to-resolved duplicate state.",
+    "Synchronized runtime release versions at 0.6.1 and updated Docker ignore/provenance docs."
+  ],
+  "remainingProductionGates": [
+    "Full npm/Vite and Maven/Spring build/test suites",
+    "Flyway integration tests on H2 and PostgreSQL and Docker smoke tests",
+    "Real OIDC/session identity and RBAC; production profile currently fails closed rather than authenticating",
+    "Durable stores and retention/deletion semantics for remaining modules",
+    "Security, load, concurrency, backup/restore and dependency vulnerability tests",
+    "Real-device multilingual, voice and low-bandwidth/offline validation"
+  ]
+}

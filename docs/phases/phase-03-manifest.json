@@ -1,0 +1,14 @@
+{
+  "phase": 3,
+  "title": "Learner profile and consent boundary",
+  "status": "implemented-in-prototype-with-production-gates-open",
+  "acceptance": "Minimal local-first profile with clear/resume controls; optional server processing requires explicit opt-in, stores volatile profile data for up to 30 minutes and does not echo profile fields. This is not production authentication or legal consent.",
+  "representativeFiles": [
+    "frontend/src/offline/offlinePocket.js",
+    "frontend/src/api/learnerJourney.js",
+    "backend/src/main/java/in/udaansetu/platform/learners/LearnerProfileRequest.java",
+    "backend/src/main/java/in/udaansetu/platform/learners/LearnerProfileService.java"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

@@ -1,0 +1,93 @@
+{
+  "caseCount": 7,
+  "sourceHitRate": 1.0,
+  "unsupportedQuestionAbstentionRate": 1.0,
+  "passedCases": 7,
+  "failedCases": 0,
+  "interpretation": "Small deterministic smoke evaluation only; not a model-quality or population-level claim.",
+  "results": [
+    {
+      "caseId": "EVAL-01",
+      "expectedSources": [
+        "nsp-reference"
+      ],
+      "retrievedSources": [
+        "nsp-reference"
+      ],
+      "sourceHit": true,
+      "expectedAbstention": false,
+      "abstained": false,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-02",
+      "expectedSources": [
+        "swayam-courses"
+      ],
+      "retrievedSources": [
+        "swayam-courses"
+      ],
+      "sourceHit": true,
+      "expectedAbstention": false,
+      "abstained": false,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-03",
+      "expectedSources": [
+        "skill-training"
+      ],
+      "retrievedSources": [
+        "skill-training"
+      ],
+      "sourceHit": true,
+      "expectedAbstention": false,
+      "abstained": false,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-04",
+      "expectedSources": [
+        "bhashini"
+      ],
+      "retrievedSources": [
+        "bhashini"
+      ],
+      "sourceHit": true,
+      "expectedAbstention": false,
+      "abstained": false,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-05",
+      "expectedSources": [
+        "nsp-reference"
+      ],
+      "retrievedSources": [
+        "nsp-reference"
+      ],
+      "sourceHit": true,
+      "expectedAbstention": false,
+      "abstained": false,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-06",
+      "expectedSources": [],
+      "retrievedSources": [],
+      "sourceHit": false,
+      "expectedAbstention": true,
+      "abstained": true,
+      "pass": true
+    },
+    {
+      "caseId": "EVAL-07",
+      "expectedSources": [],
+      "retrievedSources": [],
+      "sourceHit": false,
+      "expectedAbstention": true,
+      "abstained": true,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Small, checksum-verifying Maven launcher for this project.
+# Uses installed Maven >= 3.9 when available; otherwise bootstraps pinned Maven 3.9.11.
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROPS="$SCRIPT_DIR/.mvn/wrapper/maven-wrapper.properties"
+EXPECTED_VERSION="3.9.11"
+EXPECTED_SHA512="bcfe4fe305c962ace56ac7b5fc7a08b87d5abd8b7e89027ab251069faebee516b0ded8961445d6d91ec1985dfe30f8153268843c89aa392733d1a3ec956c9978"
+DIST_URL="https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/${EXPECTED_VERSION}/apache-maven-${EXPECTED_VERSION}-bin.tar.gz"
+CACHE_ROOT="${MAVEN_USER_HOME:-${HOME:-/tmp}/.m2}/wrapper/dists"
+DIST_HOME="$CACHE_ROOT/apache-maven-${EXPECTED_VERSION}"
+MAVEN_BIN="$DIST_HOME/bin/mvn"
+
+version_ok() {
+  local candidate="$1" output version major minor
+  [[ -x "$candidate" ]] || return 1
+  output=$("$candidate" -version 2>/dev/null | head -1 || true)
+  version=$(printf '%s' "$output" | sed -nE 's/Apache Maven ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p')
+  [[ -n "$version" ]] || return 1
+  major=${version%%.*}; minor=${version#*.}; minor=${minor%%.*}
+  (( major > 3 || (major == 3 && minor >= 9) ))
+}
+
+if command -v mvn >/dev/null 2>&1 && version_ok "$(command -v mvn)"; then
+  exec "$(command -v mvn)" "$@"
+fi
+if version_ok "$MAVEN_BIN"; then exec "$MAVEN_BIN" "$@"; fi
+
+mkdir -p "$CACHE_ROOT"
+TEMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/udaan-maven.XXXXXX")
+cleanup() { rm -rf "$TEMP_DIR"; }
+trap cleanup EXIT
+ARCHIVE="$TEMP_DIR/apache-maven-${EXPECTED_VERSION}-bin.tar.gz"
+
+if command -v curl >/dev/null 2>&1; then
+  curl --fail --location --retry 2 --connect-timeout 15 --max-time 180 "$DIST_URL" -o "$ARCHIVE"
+elif command -v wget >/dev/null 2>&1; then
+  wget --tries=3 --timeout=20 "$DIST_URL" -O "$ARCHIVE"
+else
+  echo "ERROR: curl or wget is required to bootstrap Maven ${EXPECTED_VERSION}." >&2; exit 2
+fi
+
+if command -v sha512sum >/dev/null 2>&1; then
+  ACTUAL_SHA512=$(sha512sum "$ARCHIVE" | awk '{print $1}')
+elif command -v shasum >/dev/null 2>&1; then
+  ACTUAL_SHA512=$(shasum -a 512 "$ARCHIVE" | awk '{print $1}')
+else
+  echo "ERROR: sha512sum or shasum is required to verify the Maven distribution." >&2; exit 2
+fi
+if [[ "$ACTUAL_SHA512" != "$EXPECTED_SHA512" ]]; then
+  echo "ERROR: Maven distribution checksum mismatch; refusing to execute downloaded binary." >&2
+  echo "Expected: $EXPECTED_SHA512" >&2
+  echo "Actual:   $ACTUAL_SHA512" >&2
+  exit 3
+fi
+mkdir -p "$TEMP_DIR/unpack"
+tar -xzf "$ARCHIVE" -C "$TEMP_DIR/unpack"
+rm -rf "$DIST_HOME"
+mv "$TEMP_DIR/unpack/apache-maven-${EXPECTED_VERSION}" "$DIST_HOME"
+version_ok "$MAVEN_BIN" || { echo "ERROR: Maven bootstrap did not produce a working Maven executable." >&2; exit 4; }
+# exec replaces this shell, so remove the download archive before handing off to Maven.
+rm -rf "$TEMP_DIR"
+trap - EXIT
+exec "$MAVEN_BIN" "$@"

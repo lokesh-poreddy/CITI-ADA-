@@ -1,0 +1,23 @@
+{
+  "project": "UdaanSetu",
+  "phase": 15,
+  "title": "Multilingual content framework",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Localize the opportunity-centre task flow in English, Hindi and Tamil while preserving source-truth and control labels.",
+  "implementationPaths": [
+    "frontend/src/opportunities/OpportunityCentre.jsx (TEXT dictionary)",
+    "frontend/src/voice/browserSpeech.js",
+    "frontend/src/App.jsx"
+  ],
+  "apiContracts": [
+    "Language selected through app shell",
+    "question payload sends language code en/hi/ta to AI gateway."
+  ],
+  "guardrails": [
+    "This is UI-level localization for this feature, not a claim that every official source is translated. Source text may remain in its original language."
+  ],
+  "exitCriteria": [
+    "Core controls, status, warnings and empty/error states remain understandable after changing language."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

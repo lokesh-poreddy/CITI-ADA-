@@ -1,0 +1,17 @@
+{
+  "phase": 20,
+  "title": "Mentor discovery and safe connection",
+  "goal": "Discover verified profiles and request facilitator-mediated introductions.",
+  "acceptanceCriteria": "Unverified profiles are not shown publicly; connection requests require consent, facilitator mediation and guardian/institution approval flags. Contact details are not returned.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/mentors/MentorDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/mentors/MentorService.java",
+    "backend/src/main/java/in/udaansetu/platform/mentors/MentorController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

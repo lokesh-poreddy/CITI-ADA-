@@ -1,0 +1,31 @@
+{
+  "project": "UdaanSetu",
+  "phase": 9,
+  "title": "Opportunity data ingestion and review",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Provide a controlled path for adding source-linked opportunity records without crawling or auto-publishing unreviewed content.",
+  "implementationPaths": [
+    "frontend/src/opportunities/OpportunityReviewWorkbench.jsx",
+    "frontend/src/api/opportunityReview.js",
+    "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityIngestionService.java",
+    "OpportunityIngestionController.java",
+    "IngestionCandidateRequest.java",
+    "IngestionPreviewRequest.java",
+    "ReviewQueueItem.java",
+    "ReviewDecisionRequest.java"
+  ],
+  "apiContracts": [
+    "POST /api/v1/opportunity-ingestion/preview",
+    "GET /api/v1/opportunity-ingestion/review-queue",
+    "POST /api/v1/opportunity-ingestion/review-queue/{reviewId}/decision"
+  ],
+  "guardrails": [
+    "Preview blocks invalid HTTPS URLs, duplicate IDs, invalid date/age ranges. Unknown hosts receive a review warning",
+    "nothing publishes without an explicit reviewer decision."
+  ],
+  "exitCriteria": [
+    "A contributor submits one JSON record",
+    "reviewers can inspect findings, approve or reject. Rejected/pending records never appear in public search."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

@@ -1,0 +1,84 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-udaansetu}
+      POSTGRES_USER: ${POSTGRES_USER:-udaansetu}
+      # Demo-only fallback; set POSTGRES_PASSWORD in .env. Never use the fallback outside local development.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_demo_password_change_me}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  platform-api:
+    build:
+      context: ./backend
+    environment:
+      SERVER_PORT: "8080"
+      APP_VERSION: "0.7.1"
+      SPRING_PROFILES_ACTIVE: postgres
+      APP_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-udaansetu}
+      APP_DATASOURCE_USERNAME: ${POSTGRES_USER:-udaansetu}
+      APP_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-local_demo_password_change_me}
+      APP_PROTOTYPE_IDENTITIES_ENABLED: "true"
+      APP_CORS_ALLOWED_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173"
+      # Intentionally blank by default: reviewer/aggregate reports remain disabled until configured.
+      APP_REVIEWER_TOKEN: "${APP_REVIEWER_TOKEN:-}"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/actuator/health | grep -q UP"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+  ai-gateway:
+    build:
+      context: ./ai-service
+    environment:
+      AI_PORT: "8000"
+      AI_ALLOWED_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173"
+      AI_PROVIDER: "${AI_PROVIDER:-none}"
+      AI_BASE_URL: "${AI_BASE_URL:-}"
+      AI_MODEL: "${AI_MODEL:-}"
+      AI_API_KEY: "${AI_API_KEY:-}"
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+  frontend:
+    environment:
+      CSP_CONNECT_SOURCES: "${CSP_CONNECT_SOURCES:-http://localhost:8080 http://127.0.0.1:8080 http://localhost:8000 http://127.0.0.1:8000}"
+    build:
+      context: ./frontend
+      args:
+        VITE_PLATFORM_API_BASE_URL: "${VITE_PLATFORM_API_BASE_URL:-http://localhost:8080/api/v1}"
+        VITE_AI_SERVICE_BASE_URL: "${VITE_AI_SERVICE_BASE_URL:-http://localhost:8000/api/v1}"
+    ports:
+      - "5173:80"
+    depends_on:
+      platform-api:
+        condition: service_healthy
+      ai-gateway:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/index.html"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  postgres-data:

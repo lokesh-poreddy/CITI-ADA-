@@ -1,0 +1,75 @@
+[
+  {
+    "id": "EVAL-01",
+    "question": "How can I find scholarship renewal information?",
+    "language": "en",
+    "expectedSourceIds": ["nsp-reference"],
+    "expectAbstain": false,
+    "records": [
+      {"id":"nsp-reference","title":"National Scholarship Portal","summary":"Official portal reference for scholarships and scheme discovery. Current eligibility, renewal windows and deadlines must be verified at the source.","source_name":"National Scholarship Portal","source_url":"https://scholarships.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"SCHOLARSHIP"},
+      {"id":"swayam-courses","title":"SWAYAM courses","summary":"Online learning courses and enrolment periods.","source_name":"SWAYAM","source_url":"https://swayam.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"COURSE"}
+    ]
+  },
+  {
+    "id": "EVAL-02",
+    "question": "Show me SWAYAM online courses for learning",
+    "language": "en",
+    "expectedSourceIds": ["swayam-courses"],
+    "expectAbstain": false,
+    "records": [
+      {"id":"nsp-reference","title":"National Scholarship Portal","summary":"Official portal reference for scholarship scheme discovery.","source_name":"National Scholarship Portal","source_url":"https://scholarships.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"SCHOLARSHIP"},
+      {"id":"swayam-courses","title":"SWAYAM online courses","summary":"Search online learning courses and check current enrolment windows.","source_name":"SWAYAM","source_url":"https://swayam.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"COURSE"}
+    ]
+  },
+  {
+    "id": "EVAL-03",
+    "question": "I want an apprenticeship and technical skills training",
+    "language": "en",
+    "expectedSourceIds": ["skill-training"],
+    "expectAbstain": false,
+    "records": [
+      {"id":"skill-training","title":"Skill India training references","summary":"Skill training and vocational skills opportunities. Verify current course and apprenticeship details with the provider.","source_name":"Skill India Digital Hub","source_url":"https://www.skillindiadigital.gov.in/","source_trust":"REFERENCE_ONLY","type":"APPRENTICESHIP"},
+      {"id":"bhashini","title":"BHASHINI language services","summary":"Speech and language technology APIs for Indian languages.","source_name":"BHASHINI","source_url":"https://bhashini.gov.in/","source_trust":"REFERENCE_ONLY","type":"LANGUAGE"}
+    ]
+  },
+  {
+    "id": "EVAL-04",
+    "question": "How can voice and language support help me?",
+    "language": "en",
+    "expectedSourceIds": ["bhashini"],
+    "expectAbstain": false,
+    "records": [
+      {"id":"bhashini","title":"BHASHINI voice and language services","summary":"Language and speech services, including speech-to-text and text-to-speech where supported by the configured service.","source_name":"BHASHINI","source_url":"https://bhashini.gov.in/","source_trust":"REFERENCE_ONLY","type":"LANGUAGE"},
+      {"id":"nsp-reference","title":"National Scholarship Portal","summary":"Scholarship reference portal.","source_name":"National Scholarship Portal","source_url":"https://scholarships.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"SCHOLARSHIP"}
+    ]
+  },
+  {
+    "id": "EVAL-05",
+    "question": "Where should I verify scholarship schemes?",
+    "language": "en",
+    "expectedSourceIds": ["nsp-reference"],
+    "expectAbstain": false,
+    "records": [
+      {"id":"nsp-reference","title":"National Scholarship Portal scheme discovery","summary":"Scholarship and scheme information references with source links. Verify eligibility and application dates directly with the official portal.","source_name":"National Scholarship Portal","source_url":"https://scholarships.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"SCHOLARSHIP"}
+    ]
+  },
+  {
+    "id": "EVAL-06",
+    "question": "What is my exact examination result and rank?",
+    "language": "en",
+    "expectedSourceIds": [],
+    "expectAbstain": true,
+    "records": [
+      {"id":"nsp-reference","title":"National Scholarship Portal","summary":"Scholarship and scheme discovery.","source_name":"National Scholarship Portal","source_url":"https://scholarships.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"SCHOLARSHIP"},
+      {"id":"swayam-courses","title":"SWAYAM online courses","summary":"Search course catalogue.","source_name":"SWAYAM","source_url":"https://swayam.gov.in/","source_trust":"OFFICIAL_PORTAL","type":"COURSE"}
+    ]
+  },
+  {
+    "id": "EVAL-07",
+    "question": "Can you guarantee I will receive a scholarship?",
+    "language": "en",
+    "expectedSourceIds": [],
+    "expectAbstain": true,
+    "records": []
+  }
+]

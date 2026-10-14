@@ -1,0 +1,26 @@
+{
+  "project": "UdaanSetu",
+  "phase": 16,
+  "title": "Offline learner pocket",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Cache public source-linked listings and minimal action status locally without caching authenticated API traffic.",
+  "implementationPaths": [
+    "frontend/src/offline/offlinePocket.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx",
+    "frontend/public/sw.js",
+    "frontend/src/offline/offlinePocket.test.js",
+    "docs/OFFLINE_SYNC_CONTRACT.md"
+  ],
+  "apiContracts": [
+    "Browser IndexedDB storage",
+    "no new public API route."
+  ],
+  "guardrails": [
+    "Service worker does not cache /api/**. IndexedDB stores public catalogue and action statuses, not profile/documents/income. Browser eviction and local access risks remain."
+  ],
+  "exitCriteria": [
+    "After one online visit, public listings and locally saved actions remain visible offline",
+    "new checks require connectivity."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

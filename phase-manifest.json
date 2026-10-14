@@ -1,0 +1,441 @@
+{
+  "package": "UdaanSetu cumulative prototype: Phases 01–30 with curated Resource Hub and Telugu localization",
+  "increment": "Resource-discovery product direction: curated external learning links for coding, school resources, open courses, skills, exams, scholarships and careers; fourth-language Telugu interface and learner-pathway guidance; bookmark/search regression tests and source-governance notes. Expanded curated education directory with India-focused school/open-learning sources and coding-practice destinations; completed Telugu locale handling in offline learner storage and partner module language selection.",
+  "title": "Curated Education Resource Hub and Telugu Localization",
+  "version": "0.7.1-resource-hub-telugu-localization",
+  "status": "persistence-and-query-hardening-implemented-in-source; real Maven/npm/container verification pending network-enabled environment",
+  "previousPhaseZip": "UdaanSetu_v0.6.1_Persistence_Query_Seed_Integrity.zip",
+  "phaseManifest": [
+    {
+      "phase": 1,
+      "title": "Platform foundation and experience shell",
+      "status": "implemented-in-prototype",
+      "acceptance": "React/JavaScript experience shell, Java Spring Boot API, Python FastAPI boundary, PWA static shell and local developer documentation.",
+      "representativeFiles": [
+        "frontend/src/App.jsx",
+        "backend/src/main/java/in/udaansetu/platform/PlatformApplication.java",
+        "ai-service/app/main.py",
+        "frontend/public/sw.js"
+      ]
+    },
+    {
+      "phase": 2,
+      "title": "Language-first onboarding",
+      "status": "implemented-in-prototype",
+      "acceptance": "Language preference updates the integrated journey; English, Hindi, Tamil and Telugu labels are supported on the main shell and learner journey. All 36 states/UTs appear in the broad region dropdown.",
+      "representativeFiles": [
+        "frontend/src/App.jsx",
+        "frontend/src/student/StudentJourney.jsx",
+        "frontend/src/student/student-journey.css"
+      ]
+    },
+    {
+      "phase": 3,
+      "title": "Learner profile and consent boundary",
+      "status": "implemented-in-prototype-with-production-gates-open",
+      "acceptance": "Debounced minimal local profile draft, save/resume/clear. Explicit demo opt-in is required for optional backend matching; regional selection stays local and the request excludes identity/contact fields. Server profiles are volatile with a 30-minute TTL and this is not production authentication or legal consent.",
+      "representativeFiles": [
+        "frontend/src/offline/offlinePocket.js",
+        "frontend/src/api/learnerJourney.js",
+        "backend/src/main/java/in/udaansetu/platform/learners/LearnerProfileRequest.java",
+        "backend/src/main/java/in/udaansetu/platform/learners/LearnerProfileService.java"
+      ]
+    },
+    {
+      "phase": 4,
+      "title": "Strengths and interest discovery",
+      "status": "implemented-in-prototype",
+      "acceptance": "Learners select multiple interests, strengths and goals; “I am not sure yet” is supported and selections can be revised.",
+      "representativeFiles": [
+        "frontend/src/student/careerCatalog.js",
+        "frontend/src/student/StudentJourney.jsx",
+        "frontend/src/student/StudentJourney.test.jsx"
+      ]
+    },
+    {
+      "phase": 5,
+      "title": "Career and skill taxonomy",
+      "status": "implemented-in-prototype",
+      "acceptance": "Six starter pathways span vocational/technical, creative, community, green enterprise, analytical/business and education/language routes. All contain cautions and general resource references.",
+      "representativeFiles": [
+        "frontend/src/student/careerCatalog.js",
+        "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayService.java"
+      ]
+    },
+    {
+      "phase": 6,
+      "title": "Explainable career matching",
+      "status": "implemented-in-prototype-not-validated-assessment",
+      "acceptance": "Local and Java deterministic rule matchers return multiple options with matching signals; the displayed score is a relative ranking indicator and not a probability or validated aptitude assessment.",
+      "representativeFiles": [
+        "frontend/src/student/careerCatalog.js",
+        "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayService.java",
+        "backend/src/test/java/in/udaansetu/platform/careers/CareerPathwayServiceTest.java"
+      ]
+    },
+    {
+      "phase": 7,
+      "title": "Personalized learning pathway",
+      "status": "implemented-in-prototype",
+      "acceptance": "Selected path produces three localized actionable milestones, source links, caution notes and an optional locally saved selection. Generic pathway detail can be requested without learner profile data.",
+      "representativeFiles": [
+        "frontend/src/student/StudentJourney.jsx",
+        "frontend/src/student/careerCatalog.js",
+        "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayController.java"
+      ]
+    },
+    {
+      "phase": 8,
+      "title": "Learning Resources, Exams and Credentials Discovery",
+      "status": "starter-catalogue-only",
+      "acceptance": "Curated link-only resource hub supports coding tutorials, school/college resources, courses, skills, exams, careers and aid. This does not claim a complete verified exam/credential catalogue or re-host third-party content.",
+      "representativeFiles": [
+        "frontend/src/student/careerCatalog.js",
+        "frontend/src/opportunities/OpportunityCentre.jsx",
+        "docs/OPPORTUNITY_DATA_GOVERNANCE.md"
+      ]
+    },
+    {
+      "phase": 9,
+      "title": "Opportunity data ingestion and review",
+      "status": "implemented-in-prototype",
+      "acceptance": "Ingestion preview, source provenance, validation findings and a review-before-publish workflow are available.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityIngestionService.java",
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityIngestionController.java",
+        "frontend/src/opportunities/OpportunityReviewWorkbench.jsx"
+      ]
+    },
+    {
+      "phase": 10,
+      "title": "Scholarship and scheme discovery",
+      "status": "implemented-in-prototype",
+      "acceptance": "Source-linked opportunity search includes scholarship, scheme, course and apprenticeship categories with expiry/source caveats.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityService.java",
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityCatalogue.java",
+        "frontend/src/opportunities/OpportunityCentre.jsx"
+      ]
+    },
+    {
+      "phase": 11,
+      "title": "Eligibility and deadline checker",
+      "status": "implemented-in-prototype-rule-based",
+      "acceptance": "Deterministic eligibility checks distinguish matching rules, missing information, possible mismatch and unconfigured rules; source provider remains authoritative.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityEligibilityEngine.java",
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityController.java"
+      ]
+    },
+    {
+      "phase": 12,
+      "title": "Student opportunity action centre",
+      "status": "implemented-in-prototype",
+      "acceptance": "Learners save actions locally, queue updates and can synchronize through the Java API when online.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/actions/StudentActionService.java",
+        "frontend/src/offline/offlinePocket.js",
+        "frontend/src/opportunities/OpportunityCentre.jsx"
+      ]
+    },
+    {
+      "phase": 13,
+      "title": "Grounded AI assistant",
+      "status": "implemented-in-prototype-deterministic-boundary",
+      "acceptance": "Assistant retrieves from supplied approved records, returns source references where supported and abstains when it has no supported evidence. Real LLM adapter is disabled by default.",
+      "representativeFiles": [
+        "ai-service/app/retrieval.py",
+        "ai-service/app/model_gateway.py",
+        "ai-service/app/main.py"
+      ]
+    },
+    {
+      "phase": 14,
+      "title": "Voice interaction service",
+      "status": "implemented-browser-capability-adapter",
+      "acceptance": "Browser-native speech recognition/synthesis is capability-detected with text alternatives and disclosure of browser/network limitations.",
+      "representativeFiles": [
+        "frontend/src/voice/browserSpeech.js",
+        "frontend/src/voice/browserSpeech.test.js",
+        "backend/src/main/java/in/udaansetu/platform/voice/VoiceCapabilitiesController.java"
+      ]
+    },
+    {
+      "phase": 15,
+      "title": "Multilingual content framework",
+      "status": "implemented-partially-localized",
+      "acceptance": "Core application/learner-journey labels are localized in English, Hindi and Tamil; third-party resources and all opportunity/partner content are not fully translated.",
+      "representativeFiles": [
+        "frontend/src/App.jsx",
+        "frontend/src/student/careerCatalog.js",
+        "frontend/src/opportunities/OpportunityCentre.jsx"
+      ]
+    },
+    {
+      "phase": 16,
+      "title": "Offline learner pocket",
+      "status": "implemented-in-prototype",
+      "acceptance": "Public catalogue, local actions and learner journey preferences use browser storage abstraction; service worker excludes API/authenticated responses from cache. Local storage is not secure account storage.",
+      "representativeFiles": [
+        "frontend/src/offline/offlinePocket.js",
+        "frontend/public/sw.js",
+        "frontend/src/student/StudentJourney.jsx"
+      ]
+    },
+    {
+      "phase": 17,
+      "title": "Synchronization and conflict recovery",
+      "status": "implemented-in-prototype",
+      "acceptance": "Opportunity actions queue locally, batch sync when online, retain failed events and expose pending/synced state. Learner journey profile is local-first; it is not automatically synced.",
+      "representativeFiles": [
+        "frontend/src/offline/offlinePocket.js",
+        "backend/src/main/java/in/udaansetu/platform/actions/StudentActionController.java",
+        "docs/OFFLINE_SYNC_CONTRACT.md"
+      ]
+    },
+    {
+      "phase": 18,
+      "title": "Facilitator workspace",
+      "status": "implemented-in-prototype",
+      "acceptance": "A facilitator can create a cohort, add a learner only when consent is recorded, and record a referral only for a linked learner.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorWorkspaceService.java",
+        "backend/src/main/java/in/udaansetu/platform/facilitator/FacilitatorWorkspaceController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 19,
+      "title": "Learning-module authoring",
+      "status": "implemented-in-prototype",
+      "acceptance": "A module can be saved as a draft; publishing requires a title, summary, at least one lesson and an explicit access/price policy. No payment is collected.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/modules/ModuleDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/modules/LearningModuleService.java",
+        "backend/src/main/java/in/udaansetu/platform/modules/LearningModuleController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 20,
+      "title": "Mentor discovery and safe connection",
+      "status": "implemented-in-prototype",
+      "acceptance": "Unverified profiles are not shown publicly; connection requests require consent, facilitator mediation and guardian/institution approval flags. Contact details are not returned.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/mentors/MentorDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/mentors/MentorService.java",
+        "backend/src/main/java/in/udaansetu/platform/mentors/MentorController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 21,
+      "title": "Apprenticeship, internship and employer listings",
+      "status": "implemented-in-prototype",
+      "acceptance": "New listings remain unpublished until a reviewer approves; application and source URLs must be HTTPS. Seed listings are marked illustrative, not live vacancies.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingService.java",
+        "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 22,
+      "title": "Partner/API integration adapters",
+      "status": "implemented-in-prototype",
+      "acceptance": "The registry distinguishes the local catalogue from external sources and explicitly reports that no external network adapter is enabled in this increment.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/integrations/PartnerAdapter.java",
+        "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationStatus.java",
+        "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationDescriptor.java",
+        "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationRegistryService.java",
+        "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationController.java"
+      ]
+    },
+    {
+      "phase": 23,
+      "title": "Reminders and notifications",
+      "status": "implemented-in-prototype",
+      "acceptance": "A reminder can be scheduled/listed/acknowledged; due reminders become READY on read. Email/SMS remain preferences only until a provider is approved and configured.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/notifications/NotificationDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/notifications/NotificationService.java",
+        "backend/src/main/java/in/udaansetu/platform/notifications/NotificationController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 24,
+      "title": "Monetization and sustainability",
+      "status": "implemented-in-prototype",
+      "acceptance": "The product makes no payment calls and stores no payment-card/banking data; core student discovery is proposed to remain free, and interest capture validates possible payer models.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityDtos.java",
+        "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityService.java",
+        "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityController.java",
+        "frontend/src/partners/PartnerWorkspace.jsx"
+      ]
+    },
+    {
+      "phase": 25,
+      "title": "Impact analytics and reporting",
+      "status": "implemented-prototype",
+      "acceptance": "A fixed event vocabulary accepts low-risk event counters and stores aggregates only; summary requires a configured reviewer token; no event-level payloads or user identifiers are retained.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/analytics/ImpactAnalyticsController.java",
+        "backend/src/main/java/in/udaansetu/platform/analytics/ImpactAnalyticsService.java",
+        "frontend/src/release/ImpactTrustConsole.jsx",
+        "docs/IMPACT_METRICS_CATALOG.md"
+      ]
+    },
+    {
+      "phase": 26,
+      "title": "Security, privacy and child-safety hardening",
+      "status": "implemented-prototype-controls-with-production-gates-open",
+      "acceptance": "Consent preferences, data-rights request workflow, request correlation, security headers, body-length ceiling and coarse rate limiting are implemented. Real identity/RBAC, legally reviewed consent, persistent retention and end-to-end erasure remain required before a pilot.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/privacy/PrivacyController.java",
+        "backend/src/main/java/in/udaansetu/platform/privacy/PrivacyService.java",
+        "backend/src/main/java/in/udaansetu/platform/security/SecurityControlsFilter.java",
+        "ai-service/app/security_middleware.py",
+        "docs/PRIVACY_SECURITY_CONTROL_REGISTER.md"
+      ]
+    },
+    {
+      "phase": 27,
+      "title": "Integrated quality and AI evaluation",
+      "status": "test-suites-added-python-evaluation-verified-full-build-pending",
+      "acceptance": "Python retrieval evaluation reports source hit rate and abstention accuracy over a deterministic small corpus; frontend and backend tests are added and wired into CI. Full React and Maven execution still needs a dependency-enabled environment.",
+      "representativeFiles": [
+        "ai-service/evaluation/cases.json",
+        "ai-service/evaluation/evaluate_retrieval.py",
+        "ai-service/tests/test_retrieval_evaluation.py",
+        "frontend/src/release/ImpactTrustConsole.test.jsx",
+        "backend/src/test/java/in/udaansetu/platform/release/PhaseReleaseIntegrationTest.java"
+      ]
+    },
+    {
+      "phase": 28,
+      "title": "Deployment, observability and hackathon showcase",
+      "status": "release-tooling-hardened-full-dependency-build-and-container-run-blocked-by-authoring-environment",
+      "acceptance": "Health/info endpoints, non-secret release status, request correlation, production Nginx frontend image, non-root AI container, Docker Compose checks, CI and smoke-check scripts are included. Full container build/run and browser tests are required before the final demo.",
+      "representativeFiles": [
+        "backend/Dockerfile",
+        "frontend/Dockerfile",
+        "frontend/nginx.conf.template",
+        "compose.yaml",
+        ".github/workflows/ci.yml",
+        "scripts/smoke-release.sh",
+        "docs/DEPLOYMENT_OBSERVABILITY_RUNBOOK.md",
+        "backend/mvnw",
+        "backend/mvnw.cmd",
+        "backend/.mvn/wrapper/maven-wrapper.properties",
+        "scripts/verify-release.sh",
+        "scripts/doctor.sh",
+        "docs/BUILD_VALIDATION_REPORT.md",
+        "docs/LOCAL_BUILD_SETUP.md",
+        ".github/workflows/ci.yml"
+      ]
+    },
+    {
+      "phase": 29,
+      "title": "Durable opportunity catalogue and review queue",
+      "status": "implemented-source-level; database integration tests added; full Maven execution pending",
+      "acceptance": "Opportunity catalogue and human-review queue are persisted through JDBC; Flyway V1 creates tables and V2 adds the composite candidate/status index; local H2 and PostgreSQL profiles share the schema; integration tests cover persistence round-trip, duplicate state transitions, reviewed-seed preservation and created_at stability.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityCatalogue.java",
+        "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityReviewRepository.java",
+        "backend/src/main/resources/db/migration/V1__create_opportunity_persistence.sql",
+        "backend/src/main/resources/db/migration/V2__add_pending_review_lookup_index.sql",
+        "backend/src/test/java/in/udaansetu/platform/opportunity/OpportunityPersistenceIntegrationTest.java"
+      ]
+    },
+    {
+      "phase": 30,
+      "title": "Central reviewer policy and fail-closed identity boundary",
+      "status": "implemented-in-prototype; production identity provider still required",
+      "acceptance": "Review-only endpoints use shared DemoReviewerAccess, which rejects missing/short tokens; production profile blocks sensitive routes relying on spoofable prototype actor headers with a non-secret 503 problem response.",
+      "representativeFiles": [
+        "backend/src/main/java/in/udaansetu/platform/privacy/DemoReviewerAccess.java",
+        "backend/src/main/java/in/udaansetu/platform/security/PrototypeIdentityBoundaryFilter.java",
+        "backend/src/main/resources/application-prod.yml",
+        "backend/src/test/java/in/udaansetu/platform/security/PrototypeIdentityBoundaryFilterTest.java"
+      ]
+    }
+  ],
+  "prototypeBoundaries": [
+    "Learner profile server handling requires explicit demo-service processing opt-in, uses 30-minute volatile memory storage, resets on restart, and is not authentication or production consent.",
+    "Local rule-based pathway scores are heuristics, not validated psychometric scores, eligibility decisions or predictions of employment or success.",
+    "Phases 09–28 remain prototype slices; some modules use in-memory stores that reset when services restart.",
+    "Demo actor headers are prototype identifiers and not production authentication or authorization.",
+    "External partner APIs, outgoing SMS/email/push and payment checkout are not connected.",
+    "Some opportunity/partner information is starter/reference content and is not comprehensively localized or independently verified for current availability.",
+    "Full npm tests/build, Maven tests, Docker Compose build/run and real-device accessibility/connectivity tests must run before final release.",
+    "Static contract checks do not substitute for a dependency-aware compile, runtime integration and field validation.",
+    "Phases 02–07 provide an integrated local-first learner journey prototype; Phase 08 still uses starter resources and is not a verified exam/credential database.",
+    "Browser profile storage is convenience storage, not secure account storage. Optional backend profiles are volatile and TTL-limited; production authentication, guardian/safeguarding workflow and durable data-rights service are not implemented.",
+    "v0.6.0 persists the opportunity catalogue and opportunity review queue only. Facilitator, mentor, partner listing, notifications, learner profiles, consent ledger, and analytics stores remain in-memory or prototype-scoped.",
+    "The production profile fails closed for routes that depend on spoofable demo identity headers, but there is still no production identity provider or RBAC; those routes remain unavailable rather than secured by the prototype."
+  ],
+  "releaseEngineering": {
+    "mavenBootstrap": "backend/mvnw and backend/mvnw.cmd use Maven 3.9.11 when Maven 3.9+ is not present and verify the official distribution SHA-512 checksum before use.",
+    "strictGate": "scripts/verify-release.sh runs the frontend test/build, Java clean verify, AI tests/evaluation, Compose validation, container builds and HTTP smoke test. Missing required tools count as failure.",
+    "ci": "GitHub Actions runs frontend/backend/AI checks and then builds and starts the Compose stack to run HTTP smoke tests.",
+    "currentExecutionEvidence": "72/72 offline cross-layer contracts passed; 12 Python tests passed; deterministic retrieval smoke evaluation passed 7/7; 26 JS/JSX files parsed with zero syntax errors; modified Java persistence/security sources and persistence-test source compiled against temporary framework stubs; 28 JSON, 8 YAML, Maven POM XML and shell parsing passed. npm install failed with EAI_AGAIN resolving registry.npmjs.org; Maven wrapper failed DNS for repo.maven.apache.org; Docker/Compose are unavailable. Therefore no full npm/Vite build, Maven/Spring test run, Flyway runtime test, or container smoke is claimed.",
+    "reproducibility": "Direct frontend dependencies are exact pins. package-lock.json must be generated on a network-enabled machine/CI and committed; CI uploads an artifact to assist with that step.",
+    "buildReport": "docs/BUILD_VALIDATION_REPORT.md and docs/BUILD_VALIDATION_REPORT.json",
+    "localSetup": "docs/LOCAL_BUILD_SETUP.md",
+    "offlineContracts": "scripts/check-integration-contracts.py checks frontend/backend pathway identifier parity, endpoint route parity, privacy field exclusions, local-first fallback, PWA API-cache exclusions and required tests/docs using Python standard library only.",
+    "learnerJourney": "Phases 02–07 are integrated; Phase 08 includes starter learning source links and remains incomplete until a governed current exam/credential catalogue is added.",
+    "integrationContractChecks": "scripts/check-integration-contracts.py verifies frontend/backend pathway-ID parity, API paths, explicit server opt-in, no unnecessary region transmission, complete region options, local draft persistence and test/documentation presence.",
+    "persistence": "Flyway V1 creates opportunity catalogue and review queue tables; V2 adds a composite candidate_id/review_status lookup index. Duplicate staging uses the indexed query; startup seeding preserves reviewed edits; catalogue updates retain created_at. Default local development uses file-backed H2 and Compose uses PostgreSQL. Remaining feature stores are not yet migrated.",
+    "reviewerGate": "All source-review, mentor-review and partner-listing reviewer endpoints reuse DemoReviewerAccess with consistent minimum token-length and constant-time comparison policy. This is prototype reviewer gating, not user authentication.",
+    "productionProfile": "compose.production.yaml layers postgres,prod profiles and disables all prototype-identity-dependent mutation/reviewer endpoints until real authentication and RBAC are added."
+  },
+  "resourceHub": {
+    "model": "Curated link directory; UdaanSetu stores metadata and URLs, not copies of external course, textbook, article, video or practice content.",
+    "languages": [
+      "en",
+      "hi",
+      "ta",
+      "te"
+    ],
+    "categories": [
+      "coding",
+      "school",
+      "courses",
+      "skills",
+      "exams",
+      "careers",
+      "aid"
+    ],
+    "capabilities": [
+      "search across title/provider/description/topics",
+      "category filtering",
+      "local bookmarks",
+      "provider and access notes",
+      "checked-on date",
+      "safe new-tab external links",
+      "explicit offline-bookmark vs online-content distinction"
+    ],
+    "caveat": "Resource links and source checks are a starter set, not a guarantee of current availability or language coverage. Recheck sources before public release.",
+    "resourceCount": 26,
+    "newSources": [
+      "Khan Academy India",
+      "National Digital Library of India",
+      "IGNOU Online/eGyanKosh",
+      "Code.org",
+      "LeetCode Explore",
+      "HackerRank Tutorials"
+    ],
+    "locales": [
+      "en",
+      "hi",
+      "ta",
+      "te"
+    ],
+    "contentLanguagePolicy": "The interface locale is separate from each provider resource language. Only label provider content as available in a language when confirmed by the provider."
+  }
+}

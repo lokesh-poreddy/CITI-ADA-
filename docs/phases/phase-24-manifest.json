@@ -1,0 +1,17 @@
+{
+  "phase": 24,
+  "title": "Monetization and sustainability",
+  "goal": "Sustainability hypotheses, ethical guardrails and consent-based partner interest capture.",
+  "acceptanceCriteria": "The product makes no payment calls and stores no payment-card/banking data; core student discovery is proposed to remain free, and interest capture validates possible payer models.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityService.java",
+    "backend/src/main/java/in/udaansetu/platform/sustainability/SustainabilityController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

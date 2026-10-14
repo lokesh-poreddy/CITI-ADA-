@@ -1,0 +1,17 @@
+{
+  "phase": 23,
+  "title": "Reminders and notifications",
+  "goal": "Scheduled in-app reminders, acknowledgement and delivery preferences with explicit provider boundaries.",
+  "acceptanceCriteria": "A reminder can be scheduled/listed/acknowledged; due reminders become READY on read. Email/SMS remain preferences only until a provider is approved and configured.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/notifications/NotificationDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/notifications/NotificationService.java",
+    "backend/src/main/java/in/udaansetu/platform/notifications/NotificationController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

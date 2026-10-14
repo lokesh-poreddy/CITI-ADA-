@@ -1,0 +1,28 @@
+{
+  "project": "UdaanSetu",
+  "phase": 13,
+  "title": "Grounded AI assistant",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Answer with relevant source records, safe limitations and official links; optional generation is explicitly configured.",
+  "implementationPaths": [
+    "ai-service/app/retrieval.py",
+    "ai-service/app/model_gateway.py",
+    "ai-service/app/assistant_schemas.py",
+    "ai-service/app/main.py",
+    "ai-service/tests/test_opportunity_ai.py",
+    "frontend/src/api/opportunities.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx"
+  ],
+  "apiContracts": [
+    "POST http://localhost:8000/api/v1/assistant/grounded-answer",
+    "GET http://localhost:8000/api/v1/capabilities"
+  ],
+  "guardrails": [
+    "Default is retrieval-only",
+    "unsupported questions return NO_SUPPORTED_EVIDENCE. Optional OpenAI-compatible generation is off by default and output without source-record citations is rejected."
+  ],
+  "exitCriteria": [
+    "Known query returns traceable source records. Unsupported query does not create facts. Network/model error cannot break discovery."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

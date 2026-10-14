@@ -1,0 +1,13 @@
+{
+  "phase": 2,
+  "title": "Language-first onboarding",
+  "status": "implemented-in-prototype",
+  "acceptance": "Language preference can be changed inside the integrated learner journey; core labels support English, Hindi and Tamil, and text remains a fallback if speech is unavailable.",
+  "representativeFiles": [
+    "frontend/src/App.jsx",
+    "frontend/src/student/StudentJourney.jsx",
+    "frontend/src/student/student-journey.css"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

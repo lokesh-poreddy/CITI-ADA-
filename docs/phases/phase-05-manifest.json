@@ -1,0 +1,12 @@
+{
+  "phase": 5,
+  "title": "Career and skill taxonomy",
+  "status": "implemented-in-prototype",
+  "acceptance": "Six starter pathways span vocational/technical, creative, community, green enterprise, analytical/business and education/language routes. All contain cautions and general resource references.",
+  "representativeFiles": [
+    "frontend/src/student/careerCatalog.js",
+    "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayService.java"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

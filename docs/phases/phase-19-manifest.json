@@ -1,0 +1,17 @@
+{
+  "phase": 19,
+  "title": "Learning-module authoring",
+  "goal": "Facilitator-created modules with draft/publish/archive workflow and explicit free or paid access terms.",
+  "acceptanceCriteria": "A module can be saved as a draft; publishing requires a title, summary, at least one lesson and an explicit access/price policy. No payment is collected.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/modules/ModuleDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/modules/LearningModuleService.java",
+    "backend/src/main/java/in/udaansetu/platform/modules/LearningModuleController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

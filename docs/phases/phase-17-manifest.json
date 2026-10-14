@@ -1,0 +1,29 @@
+{
+  "project": "UdaanSetu",
+  "phase": 17,
+  "title": "Synchronization and conflict recovery",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Batch queued actions over weak networks, preserve failures, replay in creation order and use stable event IDs.",
+  "implementationPaths": [
+    "frontend/src/offline/offlinePocket.js",
+    "frontend/src/api/opportunities.js",
+    "backend/src/main/java/in/udaansetu/platform/actions/ActionSyncRequest.java",
+    "StudentActionService.java",
+    "StudentActionController.java",
+    "frontend/src/offline/offlinePocket.test.js",
+    "docs/OFFLINE_SYNC_CONTRACT.md"
+  ],
+  "apiContracts": [
+    "POST /api/v1/student/opportunity-actions/sync"
+  ],
+  "guardrails": [
+    "Current conflict contract is ordered idempotent replay for one anonymous local learner key. Strong multi-device merge/versioning and durable server receipts are out of scope."
+  ],
+  "exitCriteria": [
+    "Network failure leaves queue intact",
+    "successful batch drains queue",
+    "retry does not duplicate an event",
+    "records remain sorted by creation time."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

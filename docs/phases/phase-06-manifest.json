@@ -1,0 +1,13 @@
+{
+  "phase": 6,
+  "title": "Explainable career matching",
+  "status": "implemented-in-prototype-not-validated-assessment",
+  "acceptance": "Local and Java deterministic rule matchers return multiple options with matching signals; the displayed score is a relative ranking indicator and not a probability or validated aptitude assessment.",
+  "representativeFiles": [
+    "frontend/src/student/careerCatalog.js",
+    "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayService.java",
+    "backend/src/test/java/in/udaansetu/platform/careers/CareerPathwayServiceTest.java"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

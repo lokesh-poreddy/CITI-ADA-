@@ -1,0 +1,17 @@
+{
+  "phase": 21,
+  "title": "Apprenticeship, internship and employer listings",
+  "goal": "Partner listing drafts, submission for review, filtering and public browsing of approved or explicitly illustrative entries.",
+  "acceptanceCriteria": "New listings remain unpublished until a reviewer approves; application and source URLs must be HTTPS. Seed listings are marked illustrative, not live vacancies.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingDtos.java",
+    "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingService.java",
+    "backend/src/main/java/in/udaansetu/platform/listings/PartnerListingController.java",
+    "frontend/src/partners/PartnerWorkspace.jsx"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

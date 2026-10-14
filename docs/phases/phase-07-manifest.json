@@ -1,0 +1,13 @@
+{
+  "phase": 7,
+  "title": "Personalized learning pathway",
+  "status": "implemented-in-prototype",
+  "acceptance": "Selected path produces three localized actionable milestones, source links, caution notes and an optional locally saved selection. Generic pathway detail can be requested without learner profile data.",
+  "representativeFiles": [
+    "frontend/src/student/StudentJourney.jsx",
+    "frontend/src/student/careerCatalog.js",
+    "backend/src/main/java/in/udaansetu/platform/careers/CareerPathwayController.java"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

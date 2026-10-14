@@ -1,0 +1,18 @@
+{
+  "phase": 22,
+  "title": "Partner/API integration adapters",
+  "goal": "A registry of local and planned external adapters with configuration status and authorization guidance.",
+  "acceptanceCriteria": "The registry distinguishes the local catalogue from external sources and explicitly reports that no external network adapter is enabled in this increment.",
+  "files": [
+    "backend/src/main/java/in/udaansetu/platform/integrations/PartnerAdapter.java",
+    "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationStatus.java",
+    "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationDescriptor.java",
+    "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationRegistryService.java",
+    "backend/src/main/java/in/udaansetu/platform/integrations/IntegrationController.java"
+  ],
+  "prototypeBoundaries": [
+    "In-memory stores reset on process restart.",
+    "Demo actor headers are not authentication.",
+    "Do not claim live external integrations or real opportunities unless verified."
+  ]
+}

@@ -1,0 +1,7 @@
+target
+.git
+.env
+backend-data
+*.mv.db
+*.trace.db
+*.lock.db

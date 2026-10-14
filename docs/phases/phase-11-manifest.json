@@ -1,0 +1,26 @@
+{
+  "project": "UdaanSetu",
+  "phase": 11,
+  "title": "Eligibility and deadline checker",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Evaluate only explicitly configured, reviewed rules. Never infer eligibility from absent criteria.",
+  "implementationPaths": [
+    "backend/src/main/java/in/udaansetu/platform/opportunity/OpportunityEligibilityEngine.java",
+    "EligibilityCheckRequest.java",
+    "EligibilityCheckResponse.java",
+    "OpportunityService.java",
+    "frontend/src/opportunities/OpportunityCentre.jsx"
+  ],
+  "apiContracts": [
+    "POST /api/v1/opportunities/{id}/eligibility-check"
+  ],
+  "guardrails": [
+    "Rules are optional fields for education level, state, age range and income ceiling",
+    "unconfigured rules return NEEDS_REVIEW",
+    "missing details return NEEDS_MORE_INFORMATION."
+  ],
+  "exitCriteria": [
+    "Unit/API tests cover matching, mismatch, missing fields and unconfigured rules. UI states this is not an official decision."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

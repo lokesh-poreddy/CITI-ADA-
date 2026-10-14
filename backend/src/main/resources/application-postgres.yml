@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${APP_DATASOURCE_URL:jdbc:postgresql://postgres:5432/udaansetu}
+    driver-class-name: org.postgresql.Driver
+    username: ${APP_DATASOURCE_USERNAME:udaansetu}
+    password: ${APP_DATASOURCE_PASSWORD:}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration

@@ -1,0 +1,12 @@
+# Layer this file over compose.yaml for a fail-closed production-like smoke profile:
+# docker compose -f compose.yaml -f compose.production.yaml config
+# This disables prototype identity-header endpoints. Real OIDC/RBAC must be integrated before opening them.
+services:
+  postgres:
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env or environment}
+  platform-api:
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres,prod
+      APP_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env or environment}
+      APP_PROTOTYPE_IDENTITIES_ENABLED: "false"

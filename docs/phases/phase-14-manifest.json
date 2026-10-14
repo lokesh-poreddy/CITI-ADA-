@@ -1,0 +1,27 @@
+{
+  "project": "UdaanSetu",
+  "phase": 14,
+  "title": "Voice interaction service",
+  "deliveryModel": "Approach A — End-to-End Ownership (Vertical Development)",
+  "objective": "Provide one-step browser voice input and read-aloud with locale selection and text fallback.",
+  "implementationPaths": [
+    "frontend/src/voice/browserSpeech.js",
+    "frontend/src/voice/browserSpeech.test.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx",
+    "backend/src/main/java/in/udaansetu/platform/voice/VoiceCapabilitiesController.java"
+  ],
+  "apiContracts": [
+    "GET /api/v1/voice/capabilities"
+  ],
+  "guardrails": [
+    "Browser recognition/synthesis is used where supported",
+    "capability varies by browser/device and can require internet. Offline speech is not promised."
+  ],
+  "exitCriteria": [
+    "Mic errors are explained",
+    "transcript fills editable input",
+    "text is always available",
+    "optional answer read-aloud works."
+  ],
+  "prototypeBoundary": "This phase uses the Phase 09–17 prototype contracts. Database persistence and production auth are not claimed."
+}

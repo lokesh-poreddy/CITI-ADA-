@@ -1,0 +1,13 @@
+{
+  "phase": 8,
+  "title": "Exams, courses and credential planning",
+  "status": "partially-implemented-starter-catalogue",
+  "acceptance": "General official learning portals and career-service references are offered. A comprehensive verified record set for current exams, prerequisites, regional availability, languages and deadlines is still an open data-governance task.",
+  "representativeFiles": [
+    "frontend/src/student/careerCatalog.js",
+    "frontend/src/opportunities/OpportunityCentre.jsx",
+    "docs/OPPORTUNITY_DATA_GOVERNANCE.md"
+  ],
+  "integrationContract": "scripts/check-integration-contracts.py",
+  "detailsDocument": "docs/PHASE_02_08_LEARNER_JOURNEY.md"
+}

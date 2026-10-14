@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="UdaanSetu leaf bridge mark">
+  <rect width="64" height="64" rx="19" fill="#234a3a"/>
+  <path d="M32 51V17" stroke="#fbf9ef" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M30 29C14 31 13 17 14 13C25 13 31 18 30 29Z" fill="#d7ebad"/>
+  <path d="M34 39C50 41 51 27 50 23C39 23 33 28 34 39Z" fill="#b5d4a4"/>
+  <path d="M24 51H40" stroke="#fbf9ef" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
